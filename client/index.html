@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="index.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Placement Diary</title>
+  </head>
+  <body>
+    <h1>My Placement Diary</h1>
+    <hr class="hr-top" />
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn">Home</a>
+    </nav>
+    <br />
+    <form action="new_entry.html">
+      <input class="new-entry" type="submit" value="New Entry" />
+    </form>
+    <h2>All Entries</h2>
+
+    <ul id="entrylist">
+      <li>Text field 1</li>
+      <li>Text field 2</li>
+    </ul>
+
+    <div>
+      <form action="" class="form-page">
+        <h2>New Entry</h2>
+        <div>
+          <h3 for="date" class="form-title">Date</h3>
+          <input type="date" id="date" class="date-entry" name="dateEntry" />
+        </div>
+        <div>
+          <h3 for="work" class="form-title">Work Carried Out</h3>
+          <textarea
+            class="entry"
+            id="work"
+            name="work"
+            autocomplete="off"
+            rows="8"
+            cols="10"
+            name="Work carried out"
+          ></textarea>
+        </div>
+        <div>
+          <h3 for="experience" class="form-title">
+            Knowledge/Experience gained or applied. (Please releate to technical
+            skills and soft skills developed)
+          </h3>
+          <textarea
+            class="entry"
+            id="experience"
+            name="experience"
+            autocomplete="off"
+            rows="8"
+            cols="10"
+            name="Experience"
+          ></textarea>
+        </div>
+        <div>
+          <h3 for="competency" class="form-title">Competency</h3>
+          <textarea
+            class="entry"
+            id="competency"
+            name="competency"
+            autocomplete="off"
+            rows="8"
+            cols="10"
+            name="Competency"
+          ></textarea>
+        </div>
+        <input id="submitbtn" type="submit" class="btn" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+* {
+    font-family: 'Plus Jakarta Sans';
+}
+
+body {
+    background-color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+.hr-top {
+    width: 25%;
+    color: black;
+    /* margin-bottom: 2%; */
+}
+
+/* Navigation Bar */
+.navbar {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px; */
+    cursor: pointer;
+}
+
+.nav-btn {
+    /* margin: 0; */
+    /* padding: 0; */
+    /* box-sizing: border-box; */
+    color: black;
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.nav-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* Home Page */
+.new-entry {
+    width: 15%;
+    font-size: large;
+    cursor: pointer;
+    padding: 1%;
+    margin-top: 2%;
+}
+
+.new-entry a {
+    text-decoration: none;
+}
+
+.new-entry button:visited {
+    color: black;
+}
+
+.new-entry button:hover {
+    filter: brightness(0.9);
+}
+
+/* Table */
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px 20px;
+    /* display: block; */
+}
+
+td {
+    text-align: left;
+}
+
+tr:nth-child(even) td {
+    background-color: white;
+}
+
+tr:nth-child(odd) td {
+    background-color: white;
+}
+
+caption {
+    padding: 10px;
+}
+
+/* New Entry Page */
+.form-page {
+    background-color: white;
+    padding: 10%;
+    margin: 10%;
+}
+
+.footer {
+    text-align: center;
+}
+
+.hr-bottom {
+    width: 25%;
+    color: black;
+    /* margin-bottom: 2%; */
+}
+
+@media (max-width: 770px) {
+    .form-page {
+        padding: 0;
+    }
+
+    .form-page {
+        background-color: white;
+        padding: 2%;
+    }
+
+    .footer {
+        text-align: left;
+        /* justify-content: left; */
+        display: block;
+    }
+}
+
+.form-title {
+    padding: 1rem;
+    border: solid 0.01rem;
+    margin-bottom: 0;
+    border-bottom: 0;
+    background-color: white;
+}
+
+.entry {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: medium;
+    padding: 0.3rem;
+    border: solid 0.01rem;
+}
+
+.date-entry {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: medium;
+    padding: 0.3rem;
+    border: solid 0.01rem;
+}
+
+.btn {
+    margin-top: 1%;
+    margin-left: 42%;
+    width: 15%;
+    font-size: large;
+    cursor: pointer;
+    padding: 1%;
+}
+
+.btn:hover {
+    filter: brightness(0.9);
+}

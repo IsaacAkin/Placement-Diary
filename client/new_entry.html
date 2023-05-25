@@ -15,15 +15,20 @@
   <body class="new-entry-page">
     <h1>My Placement Diary</h1>
     <hr class="hr-top" />
+
     <nav class="navbar">
       <a href="index.html" class="nav-btn">Home</a>
     </nav>
+
     <h2>New Entry</h2>
+    <p class="backLink"><a href="/">Back to all entries</a></p>
+
     <form action="" class="form-page">
       <div>
         <h3 for="date" class="form-title">Date</h3>
-        <input type="date" id="date" class="date-entry" />
+        <input type="date" id="date" class="date-entry" required />
       </div>
+
       <div>
         <h3 for="work" class="form-title">Work Carried Out</h3>
         <textarea
@@ -33,8 +38,10 @@
           rows="8"
           cols="10"
           name="Work carried out"
+          required
         ></textarea>
       </div>
+
       <div>
         <h3 for="experience" class="form-title">
           Knowledge/Experience gained or applied. (Please releate to technical
@@ -47,8 +54,10 @@
           rows="8"
           cols="10"
           name="Experience"
+          required
         ></textarea>
       </div>
+
       <div>
         <h3 for="competency" class="form-title">Competency</h3>
         <textarea
@@ -58,10 +67,13 @@
           rows="8"
           cols="10"
           name="Competency"
+          required
         ></textarea>
       </div>
+
       <input id="submitbtn" type="submit" class="btn" value="Submit" />
     </form>
+
     <hr class="hr-bottom" />
     <footer class="footer">The Footer</footer>
   </body>

@@ -65,12 +65,12 @@ table {
     border: 2px solid black;
     letter-spacing: 1px;
     font-size: 0.8rem;
+    margin: auto;
 }
 
 td {
     border: 1px solid black;
     padding: 10px 20px;
-    /* display: block; */
 }
 
 td {
@@ -90,6 +90,10 @@ caption {
 }
 
 /* New Entry Page */
+.backLink {
+    text-align: center;
+}
+
 .form-page {
     background-color: white;
     padding: 10%;

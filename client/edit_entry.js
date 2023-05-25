@@ -1,7 +1,7 @@
 const el = {};
 
 function showEntry(entry) {
-    el.date.value = new Date(entry.dateEntry).toLocaleDateString();
+    el.date.value = new Date(entry.dateEntry).toISOString().split('T')[0];
     el.work.value = entry.work;
     el.experience.value = entry.experience;
     el.competency.value = entry.competency;
@@ -50,7 +50,10 @@ async function sendEntry() {
     });
 
     if (response.ok) {
-        el.entry.value = '';
+        el.date.value = '';
+        el.work.value = '';
+        el.experience.value = '';
+        el.competency.value = '';
         const updatedEntries = await response.json();
         showEntry(updatedEntries, el.entrylist);
     } else {
@@ -71,8 +74,6 @@ function prepareHandles() {
 /** Connect listeners for button clicks, keyboard input, etc */
 function addEventListeners() {
     el.submitbtn.addEventListener('click', sendEntry);
-    el.work.addEventListener('keyup', checkKeys);
-    el.experience.addEventListener('keyup', checkKeys);
     el.competency.addEventListener('keyup', checkKeys);
 }
 

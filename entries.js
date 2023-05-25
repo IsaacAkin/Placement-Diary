@@ -43,7 +43,7 @@ export async function deleteEntry(id) {
   const statement = await db.run('DELETE FROM Entries WHERE id = ?', id);
 
   // if nothing was deleted, the ID doesn't exist
-  if (statement.changes === 0) throw new Error('Entry not found');
+  if (statement.changes === 0) return false;
   
   return true;
 }
@@ -52,7 +52,7 @@ export async function editEntry(updatedEntry) {
   const db = await dbconnect;
 
   const id = updatedEntry.id;
-  const dateEntry = updatedEntry.date;
+  const dateEntry = updatedEntry.dateEntry;
   const work = updatedEntry.work;
   const experience = updatedEntry.experience;
   const competency = updatedEntry.competency;

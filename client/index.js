@@ -26,10 +26,12 @@ function showEntries(entries, where) {
 
   for (const entry of entries) {
 
+    console.log('Entry:', entry);
+
     const row = document.createElement('tr');
 
     const dateCell = document.createElement('td');
-    dateCell.textContent = new Date(entry.dateEntry).toLocaleDateString();
+    dateCell.textContent = new Date(entry.dateEntry).toLocaleDateString('en-GB');
     row.appendChild(dateCell);
 
     const workCell = document.createElement('td');
@@ -44,10 +46,12 @@ function showEntries(entries, where) {
     competencyCell.textContent = entry.competency;
     row.appendChild(competencyCell);
 
-    const edit = document.createElement('a');
-    edit.textContent = 'edit me';
-    edit.href = `/edit_entry#${entry.id}`;
-    row.append(' (', edit, ')');
+    const editCell = document.createElement('td');
+    const editButton = document.createElement('a');
+    editButton.textContent = 'edit me';
+    editButton.href = `/edit_entry#${entry.id}`;
+    editCell.appendChild(editButton);
+    row.appendChild(editCell);
 
     const deleteCell = document.createElement('td');
     const deleteButton = document.createElement('button');
@@ -73,21 +77,12 @@ async function deleteEntry(entryId) {
 
   if (response.ok) {
     const updatedEntries = await response.json();
+    console.log('Deleted entry:', entryId);
+    console.log('Updated entries:', updatedEntries);
     removeContentFrom(el.entrylist);
     showEntries(updatedEntries, el.entrylist);
   } else {
     console.log('failed to delete entry', response);
-  }
-}
-
-async function showDetail(e) {
-  const response = await fetch('entries/' + e.target.dataset.id);
-  if (response.ok) {
-    const detail = await response.json();
-    const p = document.createElement('p');
-    p.textContent = `Message recieved on server at ${detail.dateEntry}`;
-    removeContentFrom(el.detail);
-    el.detail.append(p);
   }
 }
 
@@ -108,37 +103,6 @@ async function loadEntries() {
   showEntries(entries, el.entrylist);
 }
 
-function checkKeys(e) {
-  if (e.key === 'Enter') {
-    sendEntry();
-  }
-}
-
-async function sendEntry() {
-  const payload = { 
-    dateEntry: new Date(el.date.value).toISOString().split('T')[0],
-    work: el.work.value,
-    experience: el.experience.value,
-    competency: el.competency.value  
-  };
-  console.log('Payload', payload);
-
-  const response = await fetch('entries', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload),
-  });
-
-  if (response.ok) {
-    el.entry.value = '';
-    const updatedEntries = await response.json();
-    removeContentFrom(el.entrylist);
-    showEntries(updatedEntries, el.entrylist);
-  } else {
-    console.log('failed to send entry', response);
-  }
-}
-
 function prepareHandles() {
   el.entrylist = document.querySelector('#entrylist');
   el.date = document.querySelector('#date');
@@ -146,16 +110,7 @@ function prepareHandles() {
   el.experience = document.querySelector('#experience');
   el.competency = document.querySelector('#competency');
   el.submitbtn = document.querySelector('#submitbtn');
-  el.detail = document.querySelector('#detail');
-}
-
-function addEventListeners() {
-  el.submitbtn.addEventListener('click', sendEntry);
-  el.work.addEventListener('keyup', checkKeys);
-  el.experience.addEventListener('keyup', checkKeys);
-  el.competency.addEventListener('keyup', checkKeys);
 }
 
 prepareHandles();
-addEventListeners();
 loadEntries();

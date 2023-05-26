@@ -1,13 +1,13 @@
 const el = {};
 
-/** Use fetch to put a JSON message to the server */
+/** Use fetch to send a JSON message to the server */
 async function sendEntry() {
   const dateEntry = new Date(el.date.value).toISOString().split('T')[0];
   const work = el.work.value;
   const experience = el.experience.value;
   const competency = el.competency.value;
 
-  // If theres is at least one field empty, the data does not get registered
+  // If there is at least one empty field, the data does not get registered
   if (dateEntry === '' || work === '' || experience === '' || competency === '') {
     return;
   }
@@ -40,15 +40,14 @@ async function sendEntry() {
   }
 }
 
-/** Adds an entry if enter key is pressed, 
- * updates an entry when editing an entry */
+/** Adds an entry if the enter key is pressed */
 function checkKeys(e) {
     if (e.key === 'Enter') {
         sendEntry();
     }
 }
 
-/**Page elements used in the program are setup here for convenience */
+/** Page elements used are set up here */
 function prepareHandles() {
     el.date = document.querySelector('#date');
     el.work = document.querySelector('#work');
@@ -57,7 +56,7 @@ function prepareHandles() {
     el.submitbtn = document.querySelector('#submitbtn');
 }
 
-/** Connect listeners for button clicks, keyboard input, etc */
+/** Connect listeners for button clicks and keyboard input */
 function addEventListeners() {
     el.submitbtn.addEventListener('click', sendEntry);
     el.competency.addEventListener('keyup', checkKeys);

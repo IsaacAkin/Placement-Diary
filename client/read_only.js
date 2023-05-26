@@ -24,7 +24,7 @@ function showEntries(entries, where) {
   table.appendChild(tableHeader);
 
   const tableBody = document.createElement('tbody');
-  
+
   // Creates a new row for each entry entered
   for (const entry of entries) {
     const row = document.createElement('tr');
@@ -46,22 +46,6 @@ function showEntries(entries, where) {
     competencyCell.textContent = entry.competency;
     row.appendChild(competencyCell);
 
-    const editCell = document.createElement('td');
-    const editButton = document.createElement('a');
-    editButton.textContent = 'edit entry';
-    editButton.href = `/edit_entry#${entry.id}`;
-    editButton.classList.add('hidden-from-print');
-    editCell.appendChild(editButton);
-    row.appendChild(editCell);
-
-    const deleteCell = document.createElement('td');
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', () => deleteEntry(entry.id));
-    deleteButton.classList.add('hidden-from-print');
-    deleteCell.appendChild(deleteButton);
-    row.appendChild(deleteCell);
-
     // Appends the row to the body of the table
     tableBody.appendChild(row);
   }
@@ -71,20 +55,6 @@ function showEntries(entries, where) {
   removeContentFrom(where);
 
   where.appendChild(table);
-}
-
-/** Deletes a single entry when the delete button is pressed */
-async function deleteEntry(entryId) {
-  const response = await fetch(`entries/${entryId}`, {
-    method: 'DELETE',
-  });
-
-  if (response.ok) {
-    // When a message is deleted it loads the updated entries from the server
-    loadEntries();
-  } else {
-    console.log('failed to delete entry', response);
-  }
 }
 
 /** Loads all entries made by the user */
@@ -116,5 +86,11 @@ function prepareHandles() {
   el.printbtn = document.getElementById('#printbtn');
 }
 
+/** Connect listeners for button clicks */
+function addEventListeners() {
+  printbtn.addEventListener('click', () => { window.print(); });
+}  
+
 prepareHandles();
 loadEntries();
+addEventListeners();

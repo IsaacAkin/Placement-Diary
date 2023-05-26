@@ -4,10 +4,12 @@ import * as db from './entries.js';
 const app = express();
 app.use(express.static('client', { extensions: ['html' ] }));
 
+/** Gets all entries entered by the user */
 async function getAllEntries(req, res) {
     res.json(await db.getAllEntries());
 }
 
+/** Gets a single entry entered by the user */
 async function getEntry(req, res) {
     const result = await db.findEntry(req.params.id);
     if (result) {
@@ -17,6 +19,7 @@ async function getEntry(req, res) {
     }
 }
 
+/** Displays all entries entered by the user */
 async function postEntries(req, res) {
     const { work, experience, competency, dateEntry } = req.body;
     const entries = await db.addEntry(dateEntry, work, experience, competency);
@@ -28,6 +31,7 @@ async function putEntry(req, res) {
     res.json(entry);
 }
 
+/** Deletes a single entry entered by the user */
 async function deleteEntry(req, res) {
     const result = await db.deleteEntry(req.params.id);
     if (result) {
@@ -37,7 +41,7 @@ async function deleteEntry(req, res) {
     }
 }
 
-// wrao async function for express.js error handling
+// wrap async function for express.js error handling
 function asyncWrap(f) {
     return (req, res, next) => {
         Promise.resolve(f(req, res, next))

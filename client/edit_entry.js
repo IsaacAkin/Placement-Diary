@@ -1,5 +1,6 @@
 const el = {};
 
+/** Shows entries made by the user in their respective sections on the form */
 function showEntry(entry) {
     el.date.value = new Date(entry.dateEntry).toISOString().split('T')[0];
     el.work.value = entry.work;
@@ -11,6 +12,7 @@ function getEntryId() {
     return window.location.hash.substring(1);
 }
 
+/** Loads all entries made by the user */
 async function loadEntry() {
     const id = getEntryId();
     const response = await fetch(`entries/${id}`);
@@ -23,15 +25,14 @@ async function loadEntry() {
     showEntry(entry);
 }
 
-/** add a message of enter is pressed, update button 
- * to make it "update" when the mesage is edited */
+/** Updates an entry if the enter key is pressed */
 function checkKeys(e) {
     if (e.key === 'Enter') {
         sendEntry();
     }
 }
 
-/** Use fetch to put a JSON message to the server */
+/** Use fetch to send a JSON message to the server */
 async function sendEntry() {
     const id = getEntryId();
     const dateEntry = new Date(el.date.value).toISOString().split('T')[0];
@@ -67,7 +68,7 @@ async function sendEntry() {
     }
 }
 
-/**Page elements used in the program are setup here for convenience */
+/** Page elements used are set up here */
 function prepareHandles() {
     el.entry = document.querySelector('#entry');
     el.date = document.querySelector('#date');
@@ -77,7 +78,7 @@ function prepareHandles() {
     el.submitbtn = document.querySelector('#submitbtn');
 }
 
-/** Connect listeners for button clicks, keyboard input, etc */
+/** Connect listeners for button clicks and keyboard input */
 function addEventListeners() {
     el.submitbtn.addEventListener('click', sendEntry);
     el.competency.addEventListener('keyup', checkKeys);

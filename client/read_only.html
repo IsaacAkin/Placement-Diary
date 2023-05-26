@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="index.js"></script>
+    <script defer src="read_only.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap"
       rel="stylesheet"
@@ -23,14 +23,12 @@
     </nav>
     <br />
 
-    <!-- Button that links to the page for making a new entry -->
-    <form action="new_entry.html">
-      <input class="new-entry" type="submit" value="New Entry" />
-    </form>
+    <!-- Button that trigers the print command in the browser -->
+    <button id="printbtn" class="hidden-from-print">Print Table</button>
 
-    <h2>All Entries</h2>
+    <h2>Read Only</h2>
 
-    <!-- Where all the entries get displayed in table format -->
+    <!-- Where all the entries get displayed in table format (read only) -->
     <div id="entrylist"></div>
   </body>
 </html>

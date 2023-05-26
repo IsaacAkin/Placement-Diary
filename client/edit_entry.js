@@ -34,12 +34,22 @@ function checkKeys(e) {
 /** Use fetch to put a JSON message to the server */
 async function sendEntry() {
     const id = getEntryId();
+    const dateEntry = new Date(el.date.value).toISOString().split('T')[0];
+    const work = el.work.value;
+    const experience = el.experience.value;
+    const competency = el.competency.value;
+
+    // If theres is at least one field empty, the data does not get updated
+    if (dateEntry === '' || work === '' || experience === '' || competency === '') {
+        return;
+    }
+
     const payload = { 
         id,
-        dateEntry: new Date(el.date.value).toISOString().split('T')[0], 
-        work: el.work.value,
-        experience: el.experience.value,
-        competency: el.competency.value
+        dateEntry, 
+        work,
+        experience,
+        competency
     };
     console.log('Payload', payload);
 
@@ -50,10 +60,6 @@ async function sendEntry() {
     });
 
     if (response.ok) {
-        el.date.value = '';
-        el.work.value = '';
-        el.experience.value = '';
-        el.competency.value = '';
         const updatedEntries = await response.json();
         showEntry(updatedEntries, el.entrylist);
     } else {

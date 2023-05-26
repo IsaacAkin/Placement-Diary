@@ -26,8 +26,6 @@ function showEntries(entries, where) {
 
   for (const entry of entries) {
 
-    console.log('Entry:', entry);
-
     const row = document.createElement('tr');
 
     const dateCell = document.createElement('td');
@@ -48,7 +46,7 @@ function showEntries(entries, where) {
 
     const editCell = document.createElement('td');
     const editButton = document.createElement('a');
-    editButton.textContent = 'edit me';
+    editButton.textContent = 'edit entry';
     editButton.href = `/edit_entry#${entry.id}`;
     editCell.appendChild(editButton);
     row.appendChild(editCell);
@@ -76,11 +74,8 @@ async function deleteEntry(entryId) {
   });
 
   if (response.ok) {
-    const updatedEntries = await response.json();
-    console.log('Deleted entry:', entryId);
-    console.log('Updated entries:', updatedEntries);
-    removeContentFrom(el.entrylist);
-    showEntries(updatedEntries, el.entrylist);
+    // When a message is deleted it loads the updated entries from the server
+    loadEntries();
   } else {
     console.log('failed to delete entry', response);
   }

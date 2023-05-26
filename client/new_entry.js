@@ -2,11 +2,21 @@ const el = {};
 
 /** Use fetch to put a JSON message to the server */
 async function sendEntry() {
+  const dateEntry = new Date(el.date.value).toISOString().split('T')[0];
+  const work = el.work.value;
+  const experience = el.experience.value;
+  const competency = el.competency.value;
+
+  // If theres is at least one field empty, the data does not get registered
+  if (dateEntry === '' || work === '' || experience === '' || competency === '') {
+    return;
+  }
+
     const payload = { 
-    dateEntry: new Date(el.date.value).toISOString().split('T')[0],
-    work: el.work.value,
-    experience: el.experience.value,
-    competency: el.competency.value 
+    dateEntry,
+    work,
+    experience,
+    competency 
   };
   console.log('Payload', payload);
   
@@ -30,8 +40,8 @@ async function sendEntry() {
   }
 }
 
-/** add a message of enter is pressed, update button 
- * to make it "update" when the mesage is edited */
+/** Adds an entry if enter key is pressed, 
+ * updates an entry when editing an entry */
 function checkKeys(e) {
     if (e.key === 'Enter') {
         sendEntry();
@@ -40,7 +50,6 @@ function checkKeys(e) {
 
 /**Page elements used in the program are setup here for convenience */
 function prepareHandles() {
-    // el.entry = document.querySelector('#entry');
     el.date = document.querySelector('#date');
     el.work = document.querySelector('#work');
     el.experience = document.querySelector('#experience');

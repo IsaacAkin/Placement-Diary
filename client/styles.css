@@ -112,17 +112,13 @@ caption {
 
 @media (max-width: 770px) {
     .form-page {
-        padding: 0;
-    }
-
-    .form-page {
         background-color: white;
         padding: 2%;
+        margin: auto;
     }
 
     .footer {
-        text-align: left;
-        /* justify-content: left; */
+        text-align: center;
         display: block;
     }
 }

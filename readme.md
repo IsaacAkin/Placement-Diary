@@ -52,3 +52,7 @@ Navigate to `http://localhost:8080`
 ## Printing Format
 
 - The user can print the table by either navigating to the read only page and clicking the "Print Table" button, or by pressing "ctrl + p". The document has been formatted so that it doesn't show any of the buttons or links, the only things showing on the document are the title of the page and the table itself with all of its information.
+
+# References
+
+- Server structure used from simple staged message board stage 8: `https://github.com/portsoc/staged-simple-message-board`
